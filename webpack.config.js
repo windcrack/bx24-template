@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 
 const config = {
   entry: ['react-hot-loader/patch', './src/index.js'],
@@ -7,6 +9,13 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
+  plugins: [
+      new HtmlWebpackPlugin({
+        meta:{viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
+        title: 'Приложение на Bitrix24',
+        templateContent: `<div id="app"></div>`
+      }),
+  ],
   module: {
     rules: [
       {
